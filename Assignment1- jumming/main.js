@@ -86,7 +86,12 @@ Unicorn.prototype.constructor = Unicorn;
 
 Unicorn.prototype.update = function () {
     if (this.game.space) {
-        this.jumping = true;
+        if (this.y >= 400) {
+            if (!this.jumping) {
+                this.jumping = true;
+                this.ground = this.y;
+            }
+        }
     }
     if (this.jumping) {
         if (this.jumpAnimation.isDone()) {
